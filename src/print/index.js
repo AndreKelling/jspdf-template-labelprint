@@ -9,7 +9,6 @@ import table from './partials/table';
 import totals from './partials/totals';
 import text from './partials/text';
 import footer from './partials/footer';
-import logo from './partials/logo';
 
 export default async (printData) => {
     const doc = new jsPDF('p', 'pt');
@@ -45,39 +44,24 @@ export default async (printData) => {
     // <><>><><>><>><><><><><>>><><<><><><><>
 
     // <><>><><>><>><><><><><>>><><<><><><><>
-    // Background init
-    // need to print the background before other elements get printed on
-    fetchSvg('img/background.svg').then(async ({svg, width}) => {
-        if (svg) {
-            doc.setPage(1);
-
-            doc.vars.bgImageWidth = width;
-            doc.vars.bgImage = new XMLSerializer().serializeToString(svg);
-
-            await doc.svg(svg, {
-                x: pageCenterX - width / 2,
-                y: 250
-            });
-        }
-
-    // <><>><><>><>><><><><><>>><><<><><><><>
     // Sender's address
 
     startY = addressSender(doc, printData.addressSender, startY, fontSizes.NormalFontSize, lineSpacing);
 
-    const addressSvgLoaded = fetchSvg('img/address-bar.svg').then(({svg, width, height}) => {
-        doc.setPage(1);
-
-        const xOffset = 225;
-        const scale = 0.45; // scaling for finer details
-
-        doc.svg(svg, {
-            x: xOffset,
-            y: 136,
-            width: width * scale,
-            height: height * scale
-        });
-    });
+    // TODO qr code as plain code svg in here?
+    // const qrCodeSvgLoaded = fetchSvg('img/address-bar.svg').then(({svg, width, height}) => {
+    //     doc.setPage(1);
+    //
+    //     const xOffset = 225;
+    //     const scale = 0.45; // scaling for finer details
+    //
+    //     doc.svg(svg, {
+    //         x: xOffset,
+    //         y: 136,
+    //         width: width * scale,
+    //         height: height * scale
+    //     });
+    // });
     // <><>><><>><>><><><><><>>><><<><><><><>
     // Customer address
 
@@ -140,11 +124,6 @@ export default async (printData) => {
     }
 
     // <><>><><>><>><><><><><>>><><<><><><><>
-    // Logo
-
-    const logoLoaded = logo(doc, printData, pageNr);
-
-    // <><>><><>><>><><><><><>>><><<><><><><>
     // Page Numbers
 
     if (pageNr > 1) {
@@ -164,7 +143,7 @@ export default async (printData) => {
     // PRINT
     // <><>><><>><>><><><><><>>><><<><><><><>
 
-    Promise.all([addressSvgLoaded, logoLoaded]).then(() => {
+    //qrCodeSvgLoaded.then(() => {
         doc.save("dymo-label.pdf");
-    });
+    //});
 }
