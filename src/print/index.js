@@ -1,7 +1,5 @@
 //import jsPDF from '../../node_modules/jspdf-yworks/dist/jspdf.debug';
 import jsPDF from 'jspdf';
-import addFontNormal from '../fonts/WorkSans-normal';
-import addFontBold from '../fonts/WorkSans-bold';
 import 'svg2pdf.js';
 import fetchSvg from './utils/fetchSvg';
 import addressSender from './partials/addressSender';
@@ -14,12 +12,9 @@ import footer from './partials/footer';
 import logo from './partials/logo';
 
 export default (printData) => {
-    addFontNormal();
-    addFontBold();
-
     const doc = new jsPDF('p', 'pt');
     doc.vars = {};
-    doc.vars.fontFamily = 'WorkSans';
+    doc.vars.fontFamily = 'arial';
     doc.vars.fontWeightBold = 'bold';
     doc.vars.fontWeightNormal = 'normal';
 

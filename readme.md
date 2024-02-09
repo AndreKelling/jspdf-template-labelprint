@@ -1,10 +1,10 @@
 # jsPDF Template
 
-This a styled invoice Template [jsPDF](https://github.com/parallax/jsPDF) in an _ES6 / ECMAScript webpack_ setup.
+This a DYMO 36x89mm label template [jsPDF](https://github.com/parallax/jsPDF) in an _ES6 / ECMAScript webpack_ setup.
 
 Includes [svg2pdf](https://github.com/yWorks/svg2pdf.js) for better SVG support.
 
-Here there is a [demo](https://andrekelling.github.io/jspdf-template/).
+Here there is a [demo](https://andrekelling.github.io/jspdf-template-labelprint/).
 
 ## Install
 
@@ -12,7 +12,7 @@ Here there is a [demo](https://andrekelling.github.io/jspdf-template/).
 
 ## Build
 
-For demonstration a docs [GitHub page](https://andrekelling.github.io/jspdf-template/) is build.
+For demonstration a docs [GitHub page](https://andrekelling.github.io/jspdf-template-labelprint/) is build.
 
 1. `npm run build`
 
@@ -21,14 +21,6 @@ Just stay on development mode. Doesn't need caching manifestation.
 ## Development
 
 1. `npm run dev`
-
-## Custom-Font file
-
-I do use a custom font here. Which is prepared as base64 code like following: https://github.com/parallax/jsPDF#use-of-unicode-characters--utf-8
-
-1. My custom fonts are laying as .ttf font-files in `src/fonts` subdirectory.
-2. prepared JS script with the font's base64 code are in `src/print/fonts`
-3. they got a `import { jsPDF } from 'jspdf';` added at the very top
 
 ## Structure
 
