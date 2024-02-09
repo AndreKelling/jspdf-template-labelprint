@@ -11,10 +11,12 @@ import text from './partials/text';
 import footer from './partials/footer';
 import logo from './partials/logo';
 
-export default (printData) => {
+export default async (printData) => {
     const doc = new jsPDF('p', 'pt');
+    console.log(doc.getFontList());
+
     doc.vars = {};
-    doc.vars.fontFamily = 'arial';
+    doc.vars.fontFamily = 'helvetica';
     doc.vars.fontWeightBold = 'bold';
     doc.vars.fontWeightNormal = 'normal';
 
@@ -58,112 +60,111 @@ export default (printData) => {
             });
         }
 
-        // <><>><><>><>><><><><><>>><><<><><><><>
-        // Sender's address
+    // <><>><><>><>><><><><><>>><><<><><><><>
+    // Sender's address
 
-        startY = addressSender(doc, printData.addressSender, startY, fontSizes.NormalFontSize, lineSpacing);
+    startY = addressSender(doc, printData.addressSender, startY, fontSizes.NormalFontSize, lineSpacing);
 
-        const addressSvgLoaded = fetchSvg('img/address-bar.svg').then(({svg, width, height}) => {
-            doc.setPage(1);
+    const addressSvgLoaded = fetchSvg('img/address-bar.svg').then(({svg, width, height}) => {
+        doc.setPage(1);
 
-            const xOffset = 225;
-			const scale = 0.45; // scaling for finer details
+        const xOffset = 225;
+        const scale = 0.45; // scaling for finer details
 
-            doc.svg(svg, {
-                x: xOffset,
-                y: 136,
-				width: width * scale,
-				height: height * scale
-            });
+        doc.svg(svg, {
+            x: xOffset,
+            y: 136,
+            width: width * scale,
+            height: height * scale
         });
-        // <><>><><>><>><><><><><>>><><<><><><><>
-        // Customer address
+    });
+    // <><>><><>><>><><><><><>>><><<><><><><>
+    // Customer address
 
-        startY += 10;
-        startY = addressCustomer(doc, printData.address, startY, fontSizes.NormalFontSize, lineSpacing);
+    startY += 10;
+    startY = addressCustomer(doc, printData.address, startY, fontSizes.NormalFontSize, lineSpacing);
 
-        // <><>><><>><>><><><><><>>><><<><><><><>
-        // INVOICE DATA
-        // <><>><><>><>><><><><><>>><><<><><><><>
+    // <><>><><>><>><><><><><>>><><<><><><><>
+    // INVOICE DATA
+    // <><>><><>><>><><><><><>>><><<><><><><>
 
-        // <><>><><>><>><><><><><>>><><<><><><><>
-        // Invoicenumber, -date and subject
+    // <><>><><>><>><><><><><>>><><<><><><><>
+    // Invoicenumber, -date and subject
 
-        startY = heading(doc, printData, startY, fontSizes, lineSpacing);
+    startY = heading(doc, printData, startY, fontSizes, lineSpacing);
 
-        // <><>><><>><>><><><><><>>><><<><><><><>
-        // Table with items
+    // <><>><><>><>><><><><><>>><><<><><><><>
+    // Table with items
 
-        startY = await table(doc, printData, startY, fontSizes.NormalFontSize, lineSpacing);
+    startY = await table(doc, printData, startY, fontSizes.NormalFontSize, lineSpacing);
 
-        // <><>><><>><>><><><><><>>><><<><><><><>
-        // Totals
+    // <><>><><>><>><><><><><>>><><<><><><><>
+    // Totals
 
-        startY = await totals(doc, printData, startY, fontSizes.NormalFontSize, lineSpacing);
+    startY = await totals(doc, printData, startY, fontSizes.NormalFontSize, lineSpacing);
 
-        // <><>><><>><>><><><><><>>><><<><><><><>
-        // Text
+    // <><>><><>><>><><><><><>>><><<><><><><>
+    // Text
 
-        startY = await text(doc, printData.invoice.text, startY, fontSizes.NormalFontSize, lineSpacing);
+    await text(doc, printData.invoice.text, startY, fontSizes.NormalFontSize, lineSpacing);
 
-        // <><>><><>><>><><><><><>>><><<><><><><>
-        // Footer
+    // <><>><><>><>><><><><><>>><><<><><><><>
+    // Footer
 
-        footer(doc, printData, fontSizes.SmallFontSize, lineSpacing);
+    footer(doc, printData, fontSizes.SmallFontSize, lineSpacing);
 
-        // <><>><><>><>><><><><><>>><><<><><><><>
-        // REPEATED PAGE COMPONENTS
-        // <><>><><>><>><><><><><>>><><<><><><><>
+    // <><>><><>><>><><><><><>>><><<><><><><>
+    // REPEATED PAGE COMPONENTS
+    // <><>><><>><>><><><><><>>><><<><><><><>
 
-        const pageNr = doc.internal.getNumberOfPages();
+    const pageNr = doc.internal.getNumberOfPages();
 
-        // <><>><><>><>><><><><><>>><><<><><><><>
-        // Fold Marks
+    // <><>><><>><>><><><><><>>><><<><><><><>
+    // Fold Marks
 
-        const foldX = 12;
-        const foldMarksY = [288, 411, 585];
-        let n = 0;
+    const foldX = 12;
+    const foldMarksY = [288, 411, 585];
+    let n = 0;
+
+    while (n < pageNr) {
+        n++;
+
+        doc.setPage(n);
+
+        doc.setDrawColor(157, 183, 128);
+        doc.setLineWidth(0.5);
+
+        foldMarksY.map(valueY => {
+            doc.line(foldX, valueY, foldX + 23, valueY);
+        });
+    }
+
+    // <><>><><>><>><><><><><>>><><<><><><><>
+    // Logo
+
+    const logoLoaded = logo(doc, printData, pageNr);
+
+    // <><>><><>><>><><><><><>>><><<><><><><>
+    // Page Numbers
+
+    if (pageNr > 1) {
+        n = 0;
+        doc.setFontSize(fontSizes.SmallFontSize);
 
         while (n < pageNr) {
             n++;
 
             doc.setPage(n);
 
-            doc.setDrawColor(157, 183, 128);
-            doc.setLineWidth(0.5);
-
-            foldMarksY.map(valueY => {
-                doc.line(foldX, valueY, foldX + 23, valueY);
-            });
+            doc.text(n + ' / ' + pageNr, pageCenterX, pageHeight - 20, 'center');
         }
+    }
 
-        // <><>><><>><>><><><><><>>><><<><><><><>
-        // Logo
+    // <><>><><>><>><><><><><>>><><<><><><><>
+    // PRINT
+    // <><>><><>><>><><><><><>>><><<><><><><>
 
-        const logoLoaded = logo(doc, printData, pageNr);
-
-        // <><>><><>><>><><><><><>>><><<><><><><>
-        // Page Numbers
-
-        if (pageNr > 1) {
-            n = 0;
-            doc.setFontSize(fontSizes.SmallFontSize);
-
-            while (n < pageNr) {
-                n++;
-
-                doc.setPage(n);
-
-                doc.text(n + ' / ' + pageNr, pageCenterX, pageHeight - 20, 'center');
-            }
-        }
-
-        // <><>><><>><>><><><><><>>><><<><><><><>
-        // PRINT
-        // <><>><><>><>><><><><><>>><><<><><><><>
-
-        Promise.all([addressSvgLoaded, logoLoaded]).then(() => {
-            doc.save("invoice.pdf");
-        });
+    Promise.all([addressSvgLoaded, logoLoaded]).then(() => {
+        doc.save("dymo-label.pdf");
     });
 }
