@@ -5,22 +5,36 @@ import fetchSvg from './utils/fetchSvg';
 import addressSender from './partials/addressSender';
 import addressCustomer from './partials/addressCustomer';
 import heading from './partials/heading';
-import table from './partials/table';
-import totals from './partials/totals';
 import text from './partials/text';
 import footer from './partials/footer';
+import logo from "./partials/logo";
 
+/**
+ *
+ * @param {Array.<Object>} printData
+ * @param printData.logo
+ * @param printData.productName
+ * @param printData.productColour
+ * @param printData.bulletPoints
+ * @param printData.productCode
+ * @param printData.qrCode
+ * @param printData.productId
+ * @returns {Promise<void>}
+ */
 export default async (printData) => {
-    const doc = new jsPDF('p', 'pt');
-    console.log(doc.getFontList());
-
+    const options = {
+        orientation: 'p',
+        format: [36, 89]
+    }
+    const doc = new jsPDF(options);
+console.log('printData', printData);
     doc.vars = {};
     doc.vars.fontFamily = 'helvetica';
     doc.vars.fontWeightBold = 'bold';
     doc.vars.fontWeightNormal = 'normal';
 
     doc.setFont(doc.vars.fontFamily);
-
+console.log(doc.getFontList() )
     // <><>><><>><>><><><><><>>><><<><><><><>
     // SETTINGS
     // <><>><><>><>><><><><><>>><><<><><><><>
@@ -43,10 +57,7 @@ export default async (printData) => {
     // COMPONENTS
     // <><>><><>><>><><><><><>>><><<><><><><>
 
-    // <><>><><>><>><><><><><>>><><<><><><><>
-    // Sender's address
 
-    startY = addressSender(doc, printData.addressSender, startY, fontSizes.NormalFontSize, lineSpacing);
 
     // TODO qr code as plain code svg in here?
     // const qrCodeSvgLoaded = fetchSvg('img/address-bar.svg').then(({svg, width, height}) => {
@@ -62,40 +73,9 @@ export default async (printData) => {
     //         height: height * scale
     //     });
     // });
-    // <><>><><>><>><><><><><>>><><<><><><><>
-    // Customer address
 
-    startY += 10;
-    startY = addressCustomer(doc, printData.address, startY, fontSizes.NormalFontSize, lineSpacing);
-
-    // <><>><><>><>><><><><><>>><><<><><><><>
-    // INVOICE DATA
-    // <><>><><>><>><><><><><>>><><<><><><><>
-
-    // <><>><><>><>><><><><><>>><><<><><><><>
-    // Invoicenumber, -date and subject
-
-    startY = heading(doc, printData, startY, fontSizes, lineSpacing);
-
-    // <><>><><>><>><><><><><>>><><<><><><><>
-    // Table with items
-
-    startY = await table(doc, printData, startY, fontSizes.NormalFontSize, lineSpacing);
-
-    // <><>><><>><>><><><><><>>><><<><><><><>
-    // Totals
-
-    startY = await totals(doc, printData, startY, fontSizes.NormalFontSize, lineSpacing);
-
-    // <><>><><>><>><><><><><>>><><<><><><><>
-    // Text
-
-    await text(doc, printData.invoice.text, startY, fontSizes.NormalFontSize, lineSpacing);
-
-    // <><>><><>><>><><><><><>>><><<><><><><>
-    // Footer
-
-    footer(doc, printData, fontSizes.SmallFontSize, lineSpacing);
+    // multipage
+    // doc.addPage();
 
     // <><>><><>><>><><><><><>>><><<><><><><>
     // REPEATED PAGE COMPONENTS
@@ -103,41 +83,12 @@ export default async (printData) => {
 
     const pageNr = doc.internal.getNumberOfPages();
 
-    // <><>><><>><>><><><><><>>><><<><><><><>
-    // Fold Marks
-
-    const foldX = 12;
-    const foldMarksY = [288, 411, 585];
-    let n = 0;
-
-    while (n < pageNr) {
-        n++;
-
-        doc.setPage(n);
-
-        doc.setDrawColor(157, 183, 128);
-        doc.setLineWidth(0.5);
-
-        foldMarksY.map(valueY => {
-            doc.line(foldX, valueY, foldX + 23, valueY);
-        });
-    }
 
     // <><>><><>><>><><><><><>>><><<><><><><>
-    // Page Numbers
+    // Logo
 
-    if (pageNr > 1) {
-        n = 0;
-        doc.setFontSize(fontSizes.SmallFontSize);
+    // const logoLoaded = logo(doc, printData, pageNr);
 
-        while (n < pageNr) {
-            n++;
-
-            doc.setPage(n);
-
-            doc.text(n + ' / ' + pageNr, pageCenterX, pageHeight - 20, 'center');
-        }
-    }
 
     // <><>><><>><>><><><><><>>><><<><><><><>
     // PRINT

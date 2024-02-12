@@ -33,7 +33,7 @@ export default async (doc, text, startY, fontSize, lineSpacing) => {
 		neededHeight = splitText.length * doc.internal.getLineHeight();
 
 		textStart = splitText.slice(0, spaceForLines);
-		doc.setFont('WorkSans'); // set font here again, else weirdo things are printed out
+		// doc.setFont('helvetica'); // set font here again, else weirdo things are printed out
 		doc.text(textStart, startX, startY);
 
 		splitText = splitText.slice(spaceForLines);
@@ -42,7 +42,7 @@ export default async (doc, text, startY, fontSize, lineSpacing) => {
 	}
 
 	// set font here again, else weirdo things are printed out
-	doc.setFont('WorkSans');
+	// doc.setFont('helvetica');
 	doc.text(splitText, startX, startY);
 	neededHeight = splitText.length * doc.internal.getLineHeight();
 	startY += neededHeight + lineSpacing;
