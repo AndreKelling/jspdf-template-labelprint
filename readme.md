@@ -30,4 +30,4 @@ For demonstration a docs [GitHub page](https://andrekelling.github.io/jspdf-temp
 
 ## Issues
 
-* 
+* just first logo is used for printing all pages

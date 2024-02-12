@@ -11,14 +11,19 @@ import logo from "./partials/logo";
 
 /**
  *
- * @param {Array.<Object>} printData
- * @param printData.logo
- * @param printData.productName
- * @param printData.productColour
- * @param printData.bulletPoints
- * @param printData.productCode
- * @param printData.qrCode
- * @param printData.productId
+ * @typedef {Object} PrintData
+ * @property {string} logo base64 image
+ * @property {string} productName
+ * @property {string} productColour
+ * @property {string[]} bulletPoints
+ * @property {string} productCode
+ * @property {string} qrCode base64 image
+ * @property {string} productId
+ */
+
+/**
+ *
+ * @param {PrintData[]} printData
  * @returns {Promise<void>}
  */
 export default async (printData) => {
@@ -34,7 +39,7 @@ console.log('printData', printData);
     doc.vars.fontWeightNormal = 'normal';
 
     doc.setFont(doc.vars.fontFamily);
-console.log(doc.getFontList() )
+
     // <><>><><>><>><><><><><>>><><<><><><><>
     // SETTINGS
     // <><>><><>><>><><><><><>>><><<><><><><>
@@ -48,6 +53,7 @@ console.log(doc.getFontList() )
     const lineSpacing = 6;
 
     let startY = 20;
+    const maxHeightLogo = startY;
 
     const pageHeight = doc.internal.pageSize.height;
     const pageWidth = doc.internal.pageSize.width;
@@ -111,20 +117,19 @@ console.log(doc.getFontList() )
     // REPEATED PAGE COMPONENTS
     // <><>><><>><>><><><><><>>><><<><><><><>
 
-    const pageNr = doc.internal.getNumberOfPages();
-
+    const pagesCount = doc.internal.getNumberOfPages();
 
     // <><>><><>><>><><><><><>>><><<><><><><>
     // Logo
 
-    // const logoLoaded = logo(doc, printData, pageNr);
+    logo(doc, printData[0], pagesCount, maxHeightLogo);
 
 
     // <><>><><>><>><><><><><>>><><<><><><><>
     // PRINT
     // <><>><><>><>><><><><><>>><><<><><><><>
 
-    //qrCodeSvgLoaded.then(() => {
+   //  logoLoaded.then(() => {
         doc.save("dymo-label.pdf");
-    //});
+   //  });
 }
