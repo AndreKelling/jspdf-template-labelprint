@@ -1,7 +1,7 @@
 {
   "name": "jspdf-product-label",
   "version": "0.2.0",
-  "main": "src/app.js",
+  "main": "bundle.js",
   "author": "André Kelling",
   "description": "Dymo Label PDF printing.",
   "repository": "https://github.com/AndreKelling/jspdf-template-labelprint",

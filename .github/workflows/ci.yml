@@ -2,14 +2,13 @@ name: NodeJS with Webpack and deploy GitHub page
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "feature/ci-testing" ]
   pull_request:
     branches: [ "main" ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
@@ -38,21 +37,37 @@ jobs:
       - name: Build
         run: npm run build
 
-      - uses: actions/upload-artifact@v4
+      - name: upload docs artifact
+        uses: actions/upload-artifact@v4
         with:
           name: page
           path: docs
           if-no-files-found: error
 
+      - name: step 1 - Create a temporary artifact dist folder
+        run: mkdir dist
+
+      - name: step 2 - Add artifacts to publish to the temp folder
+        run: |
+          cp -r ./docs/dist/ ./dist
+          cp package.json ./dist
+
+      - name: upload dist artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          if-no-files-found: error
+
   deploy:
     needs: build
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     permissions:
       pages: write      # to deploy to Pages
       id-token: write   # to verify the deployment originates from an appropriate source
-    runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
         with:
@@ -64,3 +79,17 @@ jobs:
           path: .
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: .
+      - name: Publish package
+        uses: JS-DevTools/npm-publish@v3
+        with:
+          access: public
+          token: ${{ secrets.NPM_TOKEN }}
