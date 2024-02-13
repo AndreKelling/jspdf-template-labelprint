@@ -4,10 +4,12 @@ import 'svg2pdf.js';
 import fetchSvg from './utils/fetchSvg';
 import addressSender from './partials/addressSender';
 import addressCustomer from './partials/addressCustomer';
-import heading from './partials/heading';
+import heading from './partials/titles';
 import text from './partials/text';
 import footer from './partials/footer';
 import logo from "./partials/logo";
+import titles from "./partials/titles";
+import settings from "./partials/settings";
 
 /**
  *
@@ -33,24 +35,8 @@ export default async (printData) => {
     }
     const doc = new jsPDF(options);
 console.log('printData', printData);
-    doc.vars = {};
-    doc.vars.fontFamily = 'helvetica';
-    doc.vars.fontWeightBold = 'bold';
-    doc.vars.fontWeightNormal = 'normal';
 
-    doc.setFont(doc.vars.fontFamily);
-
-    // <><>><><>><>><><><><><>>><><<><><><><>
-    // SETTINGS
-    // <><>><><>><>><><><><><>>><><<><><><><>
-
-    const fontSizes = {
-        TitleFontSize:14,
-        SubTitleFontSize:12,
-        NormalFontSize:10,
-        SmallFontSize:9
-    };
-    const lineSpacing = 6;
+    settings(doc);
 
     let startY = 20;
     const maxHeightLogo = startY;
@@ -66,34 +52,7 @@ console.log('printData', printData);
     let startX = 0;
     const spaceBetweenWords = 8;
 
-
-    doc.setFontSize(fontSizes.TitleFontSize);
-    const productName = printData[0].productName;
-    if (productName) {
-        doc.setFont(doc.vars.fontFamily, doc.vars.fontWeightBold);
-        const productNameArr = doc.splitTextToSize(productName, pageWidth);
-        if (productNameArr.length > 2) {
-            productNameArr.splice(2, productNameArr.length - 2);
-        }
-        productNameArr.forEach((line) => {
-            doc.text(line, pageCenterX, startY, {align: 'center', maxWidth: pageWidth});
-            startY += lineSpacing;
-        })
-    }
-
-    doc.setFontSize(fontSizes.SubTitleFontSize);
-    const productColour = printData[0].productColour;
-    if (productColour) {
-        doc.setFont(doc.vars.fontFamily, doc.vars.fontWeightNormal);
-        const productColourArr = doc.splitTextToSize(productColour, pageWidth);
-        if (productColourArr.length > 2) {
-            productColourArr.splice(2, productColourArr.length - 2);
-        }
-        productColourArr.forEach((line) => {
-            doc.text(line, pageCenterX, startY, {align: 'center', maxWidth: pageWidth});
-            startY += lineSpacing;
-        })
-    }
+    titles(doc, printData[0], startY, pageWidth);
 
     // TODO qr code as plain code svg in here?
     // const qrCodeSvgLoaded = fetchSvg('img/address-bar.svg').then(({svg, width, height}) => {
