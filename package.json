@@ -1,10 +1,11 @@
 {
-  "name": "jspdf-template-labelprint",
+  "name": "jspdf-product-label",
   "version": "0.2.0",
   "main": "src/app.js",
   "author": "André Kelling",
-  "description": "Dymo Label template and setup for jsPDF usage in ES6.",
-  "repository": "https://github.com/AndreKelling/jspdf-template=labelprint",
+  "description": "Dymo Label PDF printing.",
+  "repository": "https://github.com/AndreKelling/jspdf-template-labelprint",
+  "homepage": "https://andrekelling.github.io/jspdf-template-labelprint/",
   "license": "MIT",
   "scripts": {
     "build": "webpack --mode=production",
@@ -19,5 +20,8 @@
     "webpack": "^5.90.1",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }
