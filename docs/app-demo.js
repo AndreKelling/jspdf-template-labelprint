@@ -59,3 +59,23 @@ document.getElementById('multipage').onclick = () => {
     printPDF(multipagePrintData);
 };
 
+document.getElementById('printAction').onclick = () => {
+    const productName = document.getElementById('productName').value;
+    const productColour = document.getElementById('productColour').value;
+    const bulletPoints = document.getElementById('bulletPoints').value.split(";");
+    const productCode = document.getElementById('productCode').value;
+    const productId = document.getElementById('productId').value;
+
+    const printData = [
+        {
+            ...basePrintData,
+            "productName": productName,
+            "productColour": productColour,
+            "bulletPoints": bulletPoints,
+            "productCode": productCode,
+            "productId": productId,
+        }
+    ];
+    printPDF(printData);
+};
+
