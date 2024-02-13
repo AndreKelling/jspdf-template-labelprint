@@ -24,9 +24,9 @@ import assembleFileName from "./utils/file-name";
 /**
  *
  * @param {PrintData[]} printDataArr
- * @returns {Promise<void>}
+ * @returns {void}
  */
-export default async (printDataArr) => {
+export default (printDataArr) => {
     const options = {
         orientation: 'p',
         format: [36, 89]

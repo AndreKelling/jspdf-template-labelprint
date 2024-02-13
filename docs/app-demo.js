@@ -1,7 +1,8 @@
 import {logoLandscapeString} from "./base64-pictures/logo-landscape-string";
 import {logoPortraitString} from "./base64-pictures/logo-portrait-string";
 import {qrCodeString} from "./base64-pictures/qr-code-string";
-import printPDF from "../src/app";
+import {printPDF} from "../src/app";
+
 
 const basePrintData = {
     "logo": logoLandscapeString,
