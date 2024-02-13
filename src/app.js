@@ -1,2 +1,7 @@
 import printPDF from './print';
-window.printPDF = printPDF;
+
+if (window) {
+    window.printPDF = printPDF;
+}
+
+export default printPDF;

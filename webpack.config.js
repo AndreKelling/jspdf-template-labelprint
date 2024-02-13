@@ -8,6 +8,7 @@ module.exports = (env, argv) => {
     const isProduction = argv.mode === 'production';
 
     return {
+        target: isProduction ? 'node' : 'web',
         entry: './src/app.js',
         output: {
             path: path.join(__dirname, 'docs/dist'),
