@@ -44,10 +44,8 @@ jobs:
           path: docs
           if-no-files-found: error
 
-      - name: add artifacts for publish to the dist folder
-        run: |
-          cp -r ./src/ ./dist
-          cp package.json ./dist
+      - name: copy src code for publishing to the dist folder
+        run: cp -r ./src/ ./dist
 
       - name: upload dist artifact
         uses: actions/upload-artifact@v4
