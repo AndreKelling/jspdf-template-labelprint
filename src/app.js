@@ -1,2 +1,2 @@
 import printPDF from './print';
-window.printPDF = printPDF;
+export { printPDF };

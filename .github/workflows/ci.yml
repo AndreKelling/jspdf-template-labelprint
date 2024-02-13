@@ -1,4 +1,4 @@
-name: NodeJS with Webpack and deploy GitHub page
+name: NodeJS demo build and deploy GitHub page and node package publishing
 
 on:
   push:
@@ -9,7 +9,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
@@ -35,24 +34,37 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
-        run: npm run build
+      - name: build demo
+        run: npm run build:demo
 
-      - uses: actions/upload-artifact@v4
+      - name: upload docs artifact
+        uses: actions/upload-artifact@v4
         with:
           name: page
           path: docs
           if-no-files-found: error
 
+      - name: add artifacts for publish to the dist folder
+        run: |
+          cp -r ./src/ ./dist
+          cp package.json ./dist
+
+      - name: upload dist artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          if-no-files-found: error
+
   deploy:
     needs: build
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     permissions:
       pages: write      # to deploy to Pages
       id-token: write   # to verify the deployment originates from an appropriate source
-    runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v4
         with:
@@ -64,3 +76,17 @@ jobs:
           path: .
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: .
+      - name: Publish package
+        uses: JS-DevTools/npm-publish@v3
+        with:
+          access: public
+          token: ${{ secrets.NPM_TOKEN }}
