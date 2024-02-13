@@ -1,9 +1,11 @@
 import {logoLandscapeString} from "./base64-pictures/logo-landscape-string";
 import {logoPortraitString} from "./base64-pictures/logo-portrait-string";
 import {qrCodeString} from "./base64-pictures/qr-code-string";
-import {printPDF} from "../src/app";
+import {printPDF, PrintData} from "../src/app";
 
-
+/**
+ * @type {PrintData}
+ */
 const basePrintData = {
     "logo": logoLandscapeString,
     "productName": "Big Shovel",
@@ -19,6 +21,10 @@ const basePrintData = {
     "qrCode": qrCodeString,
     "productId": "12345"
 };
+
+/**
+ * @type {PrintData[]}
+ */
 const shortPrintData = [
     {
         ...basePrintData,
@@ -28,6 +34,10 @@ const shortPrintData = [
         ]
     }
 ];
+
+/**
+ * @type {PrintData[]}
+ */
 const longPrintData = [
     {
         ...basePrintData,
@@ -44,6 +54,10 @@ const longPrintData = [
         "productCode": "DX.123-456-$4-superlong",
     }
 ];
+
+/**
+ * @type {PrintData[]}
+ */
 const multipagePrintData = [
     basePrintData,
     basePrintData
@@ -68,6 +82,9 @@ document.getElementById('printAction').onclick = () => {
     const productCode = document.getElementById('productCode').value;
     const productId = document.getElementById('productId').value;
 
+    /**
+     * @type {PrintData[]}
+     */
     const printData = [
         {
             ...basePrintData,

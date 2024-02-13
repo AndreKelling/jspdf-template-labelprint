@@ -1,4 +1,3 @@
-//import jsPDF from '../../node_modules/jspdf-yworks/dist/jspdf.debug';
 import jsPDF from 'jspdf';
 import logo from "./partials/logo";
 import titles from "./partials/titles";
@@ -8,18 +7,7 @@ import productCode from "./partials/productCode";
 import productId from "./partials/productId";
 import qrCode from "./partials/qrCode";
 import assembleFileName from "./utils/file-name";
-
-/**
- *
- * @typedef {Object} PrintData
- * @property {string} logo base64 image
- * @property {string} productName
- * @property {string} productColour
- * @property {string[]} bulletPoints
- * @property {string} productCode
- * @property {string} qrCode base64 image
- * @property {string} productId
- */
+import {PrintData} from "./types";
 
 /**
  *

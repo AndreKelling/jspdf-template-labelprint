@@ -1,2 +1,4 @@
 import printPDF from './print';
-export { printPDF };
+import { PrintData } from './print/types';
+
+export { printPDF, PrintData };

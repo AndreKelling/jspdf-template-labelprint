@@ -13,10 +13,13 @@ Here there is a [demo](https://andrekelling.github.io/jspdf-template-labelprint/
 Should look like this:
 
 ```
-import { printPDF } from "jspdf-product-label";
+import { printPDF, PrintData } from "jspdf-product-label";
 
 document.querySelector(".js-print-pdf").addEventListener("click", function() {
-    printPDF([{
+    /**
+    * @type {PrintData[]}
+    */
+    const printData = {
         "logo": logoLandscapeString,
         "productName": "Big Shovel",
         "productColour": "midgrey",
@@ -30,10 +33,12 @@ document.querySelector(".js-print-pdf").addEventListener("click", function() {
         "productCode": "DX.123-456-$4",
         "qrCode": qrCodeString,
         "productId": "12345"
-    }]);
+    }
+    
+    printPDF([
+        printData
+    ]);
 });
 ```
 
-## Issues
-
-* be aware that the QR code image has no white margin around it
+Has a little interface helper `PrintData` via JSDoc.
