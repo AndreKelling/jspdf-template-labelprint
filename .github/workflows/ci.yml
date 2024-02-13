@@ -1,8 +1,8 @@
-name: NodeJS with Webpack and deploy GitHub page
+name: NodeJS demo build and deploy GitHub page and node package publishing
 
 on:
   push:
-    branches: [ "main", "feature/ci-testing" ]
+    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 

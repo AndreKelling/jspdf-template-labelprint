@@ -10,7 +10,29 @@ Here there is a [demo](https://andrekelling.github.io/jspdf-template-labelprint/
 
 ## Usage
 
-`printPDF(printDataArray)`
+Should look like this:
+
+```
+import { printPDF } from "jspdf-product-label";
+
+document.querySelector(".js-print-pdf").addEventListener("click", function() {
+    printPDF([{
+        "logo": logoLandscapeString,
+        "productName": "Big Shovel",
+        "productColour": "midgrey",
+        "bulletPoints": [
+            "1. Point one",
+             "2. Point two",
+            "3. Point three",
+            "4. Point four",
+            "5. Point five"
+        ],
+        "productCode": "DX.123-456-$4",
+        "qrCode": qrCodeString,
+        "productId": "12345"
+    }]);
+});
+```
 
 ## Issues
 

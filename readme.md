@@ -25,13 +25,11 @@ For demonstration a docs [GitHub page](https://andrekelling.github.io/jspdf-temp
 
 Is done via GitHub action.
 
-A copy of the dist build for the docs dir is taken as artifact for the node package.
+* raise version in `dist/package.json`
+
+A copy of the src dir is taken as artifact for the node package in the dist dir.
 
 ## Structure
 
 * Print components or template partials are placed in `src/print/partials`
 * Tools like `scaleDown` are placed in `src/print/utils`
-
-## Issues
-
-* be aware that the QR code image has no white margin around it
