@@ -66,7 +66,7 @@ export default async (printDataArr) => {
     // <><>><><>><>><><><><><>>><><<><><><><>
     // PRINT
     // <><>><><>><>><><><><><>>><><<><><><><>
-    const fileName = assembleFileName(printDataArr.length, printDataArr[0].productName, printDataArr[0].productColour);
+    const fileName = assembleFileName(printDataArr.length, printDataArr[0]);
 
     doc.save(fileName + ".pdf");
 }
