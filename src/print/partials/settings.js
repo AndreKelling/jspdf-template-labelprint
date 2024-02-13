@@ -20,7 +20,7 @@ export default (doc) => {
     doc.vars.fontSizes = {
         TitleFontSize:14,
         SubTitleFontSize:12,
-        NormalFontSize:10,
+        NormalFontSize:9,
         SmallFontSize:8,
         IdFontSize:18
     };

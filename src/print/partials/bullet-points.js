@@ -9,8 +9,8 @@ import jsPDF from 'jspdf';
  */
 export default (doc, printData, pageWidth) => {
     const startX = 2;
-    let startY = 40;
-    const lineSpacing = doc.vars.lineSpacing - 1;
+    let startY = 39;
+    const lineSpacing = doc.vars.lineSpacing - 1.6;
 
     doc.setFontSize(doc.vars.fontSizes.NormalFontSize);
     const bulletPoints = printData.bulletPoints;

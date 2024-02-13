@@ -39,7 +39,7 @@ const longPrintData = [
             "4. Point four",
             "5. Point five"
         ],
-        "productCode": "DX.123-456-$4-superlong-NR",
+        "productCode": "DX.123-456-$4-superlong",
     }
 ];
 const multipagePrintData = [

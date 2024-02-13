@@ -13,6 +13,7 @@ import settings from "./partials/settings";
 import bulletPoints from "./partials/bullet-points";
 import productCode from "./partials/productCode";
 import productId from "./partials/productId";
+import qrCode from "./partials/qrCode";
 
 /**
  *
@@ -59,22 +60,10 @@ console.log('printData', printData);
 
     bulletPoints(doc, printData[0], pageWidth);
 
-    productCode(doc, printData[0].productCode, pageWidth);
+    // print qr code before text. so that any white margin from image is below text.
+    qrCode(doc, printData[0].qrCode, pageWidth);
 
-    // TODO qr code as plain code svg in here?
-    // const qrCodeSvgLoaded = fetchSvg('img/address-bar.svg').then(({svg, width, height}) => {
-    //     doc.setPage(1);
-    //
-    //     const xOffset = 225;
-    //     const scale = 0.45; // scaling for finer details
-    //
-    //     doc.svg(svg, {
-    //         x: xOffset,
-    //         y: 136,
-    //         width: width * scale,
-    //         height: height * scale
-    //     });
-    // });
+    productCode(doc, printData[0].productCode, pageWidth);
 
     productId(doc, printData[0].productId, pageWidth);
 
@@ -90,7 +79,7 @@ console.log('printData', printData);
     // <><>><><>><>><><><><><>>><><<><><><><>
     // Logo
 
-    logo(doc, printData[0], pagesCount, maxHeightLogo);
+    logo(doc, printData[0].logo, pagesCount, maxHeightLogo);
 
 
     // <><>><><>><>><><><><><>>><><<><><><><>
