@@ -44,10 +44,7 @@ jobs:
           path: docs
           if-no-files-found: error
 
-      - name: step 1 - Create a temporary artifact dist folder
-        run: mkdir dist
-
-      - name: step 2 - Add artifacts to publish to the temp folder
+      - name: add artifacts for publish to the dist folder
         run: |
           cp -r ./docs/dist/ ./dist
           cp package.json ./dist
