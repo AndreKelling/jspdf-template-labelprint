@@ -11,6 +11,8 @@ import logo from "./partials/logo";
 import titles from "./partials/titles";
 import settings from "./partials/settings";
 import bulletPoints from "./partials/bullet-points";
+import productCode from "./partials/productCode";
+import productId from "./partials/productId";
 
 /**
  *
@@ -57,6 +59,8 @@ console.log('printData', printData);
 
     bulletPoints(doc, printData[0], pageWidth);
 
+    productCode(doc, printData[0].productCode, pageWidth);
+
     // TODO qr code as plain code svg in here?
     // const qrCodeSvgLoaded = fetchSvg('img/address-bar.svg').then(({svg, width, height}) => {
     //     doc.setPage(1);
@@ -71,6 +75,8 @@ console.log('printData', printData);
     //         height: height * scale
     //     });
     // });
+
+    productId(doc, printData[0].productId, pageWidth);
 
     // multipage
     // doc.addPage();
