@@ -13,8 +13,7 @@
     "clearDist": "rm -rf docs/dist/*"
   },
   "dependencies": {
-    "jspdf": "^2.5.1",
-    "svg2pdf.js": "^2.2.3"
+    "jspdf": "^2.5.1"
   },
   "devDependencies": {
     "webpack": "^5.90.1",

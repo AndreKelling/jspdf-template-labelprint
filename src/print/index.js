@@ -1,12 +1,5 @@
 //import jsPDF from '../../node_modules/jspdf-yworks/dist/jspdf.debug';
 import jsPDF from 'jspdf';
-import 'svg2pdf.js';
-import fetchSvg from './utils/fetchSvg';
-import addressSender from './partials/addressSender';
-import addressCustomer from './partials/addressCustomer';
-import heading from './partials/titles';
-import text from './partials/text';
-import footer from './partials/footer';
 import logo from "./partials/logo";
 import titles from "./partials/titles";
 import settings from "./partials/settings";
