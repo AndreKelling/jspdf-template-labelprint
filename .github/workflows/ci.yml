@@ -34,8 +34,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build
-        run: npm run build
+      - name: build demo
+        run: npm run build:demo
 
       - name: upload docs artifact
         uses: actions/upload-artifact@v4
@@ -44,10 +44,11 @@ jobs:
           path: docs
           if-no-files-found: error
 
-      - name: add artifacts for publish to the dist folder
-        run: |
-          cp -r ./docs/dist/ ./dist
-          cp package.json ./dist
+      - name: build dist
+        run: npm run build:publish
+
+      - name: copy package.json for publish to the dist folder
+        run: cp package.json ./dist
 
       - name: upload dist artifact
         uses: actions/upload-artifact@v4

@@ -1,13 +1,15 @@
 {
   "name": "jspdf-product-label",
-  "version": "0.3.1",
-  "main": "./dist/bundle.js",
+  "version": "0.3.2",
+  "main": "./dist/index.js",
   "author": "André Kelling",
   "description": "Dymo Label PDF printing.",
   "repository": "https://github.com/AndreKelling/jspdf-template-labelprint",
   "homepage": "https://andrekelling.github.io/jspdf-template-labelprint/",
   "license": "MIT",
   "scripts": {
+    "build:demo" : "esbuild docs/app-demo.js --bundle --minify --sourcemap --outfile=docs/dist/demo-bundle.js",
+    "build:publish": "esbuild src/app.js --bundle --minify --outfile=dist/index.js",
     "build": "webpack --mode=production",
     "dev": "webpack --watch --mode=development",
     "serve": "webpack serve",
@@ -17,6 +19,7 @@
     "jspdf": "^2.5.1"
   },
   "devDependencies": {
+    "esbuild": "0.20.0",
     "webpack": "^5.90.1",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.0"
