@@ -10,6 +10,7 @@ import footer from './partials/footer';
 import logo from "./partials/logo";
 import titles from "./partials/titles";
 import settings from "./partials/settings";
+import bulletPoints from "./partials/bullet-points";
 
 /**
  *
@@ -53,6 +54,8 @@ console.log('printData', printData);
     const spaceBetweenWords = 8;
 
     titles(doc, printData[0], startY, pageWidth);
+
+    bulletPoints(doc, printData[0], pageWidth);
 
     // TODO qr code as plain code svg in here?
     // const qrCodeSvgLoaded = fetchSvg('img/address-bar.svg').then(({svg, width, height}) => {

@@ -23,5 +23,5 @@ export default (doc) => {
         NormalFontSize:10,
         SmallFontSize:9
     };
-    doc.vars.lineSpacing = 6;
+    doc.vars.lineSpacing = 5;
 }
