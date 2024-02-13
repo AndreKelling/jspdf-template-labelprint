@@ -9,7 +9,7 @@
   "license": "MIT",
   "scripts": {
     "build": "webpack --mode=production",
-    "dev": "webpack --watch --mode=production",
+    "dev": "webpack --watch --mode=development",
     "serve": "webpack serve",
     "clearDist": "rm -rf docs/dist/*"
   },

@@ -5,6 +5,7 @@ const COLOR_END = '\x1b[0m';
 
 module.exports = (env, argv) => {
     console.log('Mode:', CYAN_START, argv.mode, COLOR_END);
+    const isProduction = argv.mode === 'production';
 
     return {
         entry: './src/app.js',
@@ -12,7 +13,7 @@ module.exports = (env, argv) => {
             path: path.join(__dirname, 'docs/dist'),
             filename: 'bundle.js',
         },
-        devtool: 'eval-source-map',
+        devtool: isProduction ? false : 'eval-source-map',
         devServer: {
             static: {
                 directory: path.join(__dirname, 'docs'),
