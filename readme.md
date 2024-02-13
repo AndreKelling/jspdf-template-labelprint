@@ -21,6 +21,12 @@ For demonstration a docs [GitHub page](https://andrekelling.github.io/jspdf-temp
 
 1. `npm run serve`
 
+## Publish
+
+Is done via GitHub action.
+
+A copy of the dist build for the docs dir is taken as artifact for the node package.
+
 ## Structure
 
 * Print components or template partials are placed in `src/print/partials`
