@@ -24,7 +24,7 @@ For demonstration a docs [GitHub page](https://andrekelling.github.io/jspdf-temp
 ## Structure
 
 * Print components or template partials are placed in `src/print/partials`
-* `newPage` is a tool and placed in `src/print/utils`
+* Tools like `scaleDown` are placed in `src/print/utils`
 
 ## Issues
 

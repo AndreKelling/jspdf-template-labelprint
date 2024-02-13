@@ -22,64 +22,49 @@ import qrCode from "./partials/qrCode";
 
 /**
  *
- * @param {PrintData[]} printData
+ * @param {PrintData[]} printDataArr
  * @returns {Promise<void>}
  */
-export default async (printData) => {
+export default async (printDataArr) => {
     const options = {
         orientation: 'p',
         format: [36, 89]
     }
     const doc = new jsPDF(options);
-console.log('printData', printData);
 
     settings(doc);
 
     let startY = 20;
-    const maxHeightLogo = startY;
 
-    const pageHeight = doc.internal.pageSize.height;
     const pageWidth = doc.internal.pageSize.width;
-    const pageCenterX = pageWidth / 2;
 
     // <><>><><>><>><><><><><>>><><<><><><><>
     // COMPONENTS
     // <><>><><>><>><><><><><>>><><<><><><><>
 
-    let startX = 0;
-    const spaceBetweenWords = 8;
+    printDataArr.forEach((printData, index) => {
+        titles(doc, printData, startY, pageWidth);
 
-    titles(doc, printData[0], startY, pageWidth);
+        bulletPoints(doc, printData.bulletPoints, pageWidth);
 
-    bulletPoints(doc, printData[0], pageWidth);
+        // print qr code before text. so that any white margin from image is below text.
+        qrCode(doc, printData.qrCode, pageWidth);
 
-    // print qr code before text. so that any white margin from image is below text.
-    qrCode(doc, printData[0].qrCode, pageWidth);
+        productCode(doc, printData.productCode, pageWidth);
 
-    productCode(doc, printData[0].productCode, pageWidth);
+        productId(doc, printData.productId, pageWidth);
 
-    productId(doc, printData[0].productId, pageWidth);
+        logo(doc, printData.logo);
 
-    // multipage
-    // doc.addPage();
-
-    // <><>><><>><>><><><><><>>><><<><><><><>
-    // REPEATED PAGE COMPONENTS
-    // <><>><><>><>><><><><><>>><><<><><><><>
-
-    const pagesCount = doc.internal.getNumberOfPages();
-
-    // <><>><><>><>><><><><><>>><><<><><><><>
-    // Logo
-
-    logo(doc, printData[0].logo, pagesCount, maxHeightLogo);
-
+        const isNotLastLoop = index !== printDataArr.length - 1;
+        if (isNotLastLoop){
+            doc.addPage();
+        }
+    });
 
     // <><>><><>><>><><><><><>>><><<><><><><>
     // PRINT
     // <><>><><>><>><><><><><>>><><<><><><><>
 
-   //  logoLoaded.then(() => {
-        doc.save("dymo-label.pdf");
-   //  });
+    doc.save("dymo-label.pdf");
 }

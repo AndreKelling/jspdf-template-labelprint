@@ -1,4 +1,5 @@
 import jsPDF from 'jspdf';
+import scaleDown from "../utils/scale-down";
 
 /**
  * jsPDF import just for typing!
@@ -12,32 +13,16 @@ export default (doc, qrCode, pageWidth) => {
         return;
     }
     const startY = 59;
-    const mmDpiFactor = 72 / 25.4; // dpi / mm
     const qrCodeDimension = 63;
     const maxWidthInPx = qrCodeDimension;
     const maxHeightInPx = qrCodeDimension;
     const pageCenterX = pageWidth / 2;
 
     const imageProps = doc.getImageProperties(qrCode);
-    let width = imageProps.width;
-    let height = imageProps.height;
 
-    if (width > maxWidthInPx) {
-        const ratio = width / maxWidthInPx;
-        width = width / ratio;
-        height = height / ratio;
-    }
+    const dimensions = scaleDown(imageProps.width, imageProps.height, maxWidthInPx, maxHeightInPx);
 
-    if (height > maxHeightInPx) {
-        const ratio = height / maxHeightInPx;
-        width = width / ratio;
-        height = height / ratio;
-    }
+    const x = pageCenterX - dimensions.width / 2;
 
-    width = width / mmDpiFactor;
-    height = height / mmDpiFactor;
-
-    const x = pageCenterX - width / 2;
-
-    doc.addImage(qrCode, imageProps.fileType, x, startY, width, height);
+    doc.addImage(qrCode, imageProps.fileType, x, startY, dimensions.width, dimensions.height);
 }
