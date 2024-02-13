@@ -7,6 +7,7 @@ import bulletPoints from "./partials/bullet-points";
 import productCode from "./partials/productCode";
 import productId from "./partials/productId";
 import qrCode from "./partials/qrCode";
+import assembleFileName from "./utils/file-name";
 
 /**
  *
@@ -65,6 +66,7 @@ export default async (printDataArr) => {
     // <><>><><>><>><><><><><>>><><<><><><><>
     // PRINT
     // <><>><><>><>><><><><><>>><><<><><><><>
+    const fileName = assembleFileName(printDataArr.length, printDataArr[0].productName, printDataArr[0].productColour);
 
-    doc.save("dymo-label.pdf");
+    doc.save(fileName + ".pdf");
 }
