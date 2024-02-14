@@ -18,10 +18,12 @@ export default (doc, qrCode, pageWidth) => {
     const maxHeightInPx = qrCodeDimension;
     const pageCenterX = pageWidth / 2;
 
-    const imageProps = doc.getImageProperties(qrCode);
+    let imageProps;
 
-    if (imageProps.fileType === 'UNKNOWN') {
-        console.warn('UNKNOWN image fileType for qrCode')
+    try {
+        imageProps = doc.getImageProperties(qrCode);
+    } catch (error) {
+        console.warn('Error getting image properties for qrCode', error);
         return;
     }
 

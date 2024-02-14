@@ -20,10 +20,12 @@ export default (doc, logo) => {
     const maxHeightLogoInPx = Math.round((maxHeightLogo -7) * mmDpiFactor); // minus 6mm, for spacing to top and 5 for better spacing and calculation at all
     const pageCenterX = pageWidth / 2;
 
-    const imageProps = doc.getImageProperties(logo);
+    let imageProps;
 
-    if (imageProps.fileType === 'UNKNOWN') {
-        console.warn('UNKNOWN image fileType for logo')
+    try {
+        imageProps = doc.getImageProperties(logo);
+    } catch (error) {
+        console.warn('Error getting image properties for logo', error);
         return;
     }
 
