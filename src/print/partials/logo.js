@@ -22,6 +22,11 @@ export default (doc, logo) => {
 
     const imageProps = doc.getImageProperties(logo);
 
+    if (imageProps.fileType === 'UNKNOWN') {
+        console.warn('UNKNOWN image fileType for logo')
+        return;
+    }
+
     const dimensions = scaleDown(imageProps.width, imageProps.height, pageWidthInPx, maxHeightLogoInPx);
 
     const x = pageCenterX - dimensions.width / 2;

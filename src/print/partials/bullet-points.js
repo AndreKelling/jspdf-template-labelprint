@@ -8,6 +8,10 @@ import JsPDF from 'jspdf';
  * @param {number} pageWidth
  */
 export default (doc, bulletPoints, pageWidth) => {
+    if (!bulletPoints) {
+        return;
+    }
+
     const startX = 2;
     let startY = 39;
     const lineSpacing = doc.vars.lineSpacing - 1.6;

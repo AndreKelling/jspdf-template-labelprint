@@ -20,6 +20,11 @@ export default (doc, qrCode, pageWidth) => {
 
     const imageProps = doc.getImageProperties(qrCode);
 
+    if (imageProps.fileType === 'UNKNOWN') {
+        console.warn('UNKNOWN image fileType for qrCode')
+        return;
+    }
+
     const dimensions = scaleDown(imageProps.width, imageProps.height, maxWidthInPx, maxHeightInPx);
 
     const x = pageCenterX - dimensions.width / 2;
