@@ -7,12 +7,10 @@ import productCode from "./partials/productCode";
 import productId from "./partials/productId";
 import qrCode from "./partials/qrCode";
 import assembleFileName from "./utils/file-name";
-import {PrintData} from "./types";
 
 /**
- *
  * @param {PrintData[]} printDataArr
- * @returns {void}
+ * @returns {jsPDF}
  */
 export default (printDataArr) => {
     const options = {
@@ -56,5 +54,5 @@ export default (printDataArr) => {
     // <><>><><>><>><><><><><>>><><<><><><><>
     const fileName = assembleFileName(printDataArr.length, printDataArr[0]);
 
-    doc.save(fileName + ".pdf");
+    return doc.save(fileName + ".pdf");
 }

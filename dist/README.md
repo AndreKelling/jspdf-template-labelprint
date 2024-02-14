@@ -13,11 +13,11 @@ Here there is a [demo](https://andrekelling.github.io/jspdf-template-labelprint/
 Should look like this:
 
 ```
-import { printPDF, PrintData } from "jspdf-product-label";
+import { printPDF } from "jspdf-product-label";
 
 document.querySelector(".js-print-pdf").addEventListener("click", function() {
     /**
-    * @type {PrintData[]}
+    * @type {PrintData} check PrintData interface in src/print/index.d.ts
     */
     const printData = {
         "logo": logoLandscapeString,
@@ -40,5 +40,3 @@ document.querySelector(".js-print-pdf").addEventListener("click", function() {
     ]);
 });
 ```
-
-Has a little interface helper `PrintData` via JSDoc.

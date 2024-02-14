@@ -9,6 +9,11 @@ Here there is a [demo](https://andrekelling.github.io/jspdf-template-labelprint/
 
 1. `npm install`
 
+If you want the usable node package, you can install it via npm:
+
+`npm i jspdf-product-label -S` it is here https://www.npmjs.com/package/jspdf-product-label
+
+
 ## Build
 
 Creates a bundle JS file which provides the global method `printPDF()`.
@@ -19,7 +24,12 @@ For demonstration a docs [GitHub page](https://andrekelling.github.io/jspdf-temp
 
 ## Development
 
-1. `npm run serve`
+1. `npm run dev`
+2. `npm run serve`
+
+## Test
+
+1. `npm test`
 
 ## Publish
 
