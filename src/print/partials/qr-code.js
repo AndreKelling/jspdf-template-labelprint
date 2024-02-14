@@ -1,10 +1,10 @@
-import jsPDF from 'jspdf';
+import JsPDF from 'jspdf';
 import scaleDown from "../utils/scale-down.js";
 
 /**
- * jsPDF import just for typing!
+ * JsPDF import just for typing!
  *
- * @param {jsPDF} doc
+ * @param {JsPDF} doc
  * @param {string} qrCode base64 picture
  * @param {number} pageWidth
  */

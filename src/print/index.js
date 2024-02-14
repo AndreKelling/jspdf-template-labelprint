@@ -1,4 +1,4 @@
-import jsPDF from 'jspdf';
+import JsPDF from 'jspdf';
 import logo from "./partials/logo.js";
 import titles from "./partials/titles.js";
 import settings from "./partials/settings.js";
@@ -10,14 +10,14 @@ import assembleFileName from "./utils/file-name.js";
 
 /**
  * @param {PrintData[]} printDataArr
- * @returns {jsPDF}
+ * @returns {JsPDF}
  */
 export default (printDataArr) => {
     const options = {
         orientation: 'p',
         format: [36, 89]
     }
-    const doc = new jsPDF(options);
+    const doc = new JsPDF(options);
 
     settings(doc);
 

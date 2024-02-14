@@ -1,9 +1,9 @@
-import jsPDF from 'jspdf';
+import JsPDF from 'jspdf';
 
 /**
- * jsPDF import just for typing!
+ * JsPDF import just for typing!
  *
- * @param {jsPDF} doc
+ * @param {JsPDF} doc
  * @param {string} productId
  * @param {number} pageWidth
  */
