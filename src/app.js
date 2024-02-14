@@ -1,3 +1,3 @@
-import printPDF from './print';
+import printPDF from './print/index.js';
 
 export { printPDF };
