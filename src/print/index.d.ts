@@ -1,3 +1,5 @@
+import JsPDF from "jspdf";
+
 declare interface PrintData {
     logo: string,
     productName: string,
@@ -8,4 +10,4 @@ declare interface PrintData {
     productId: string
 }
 
-export declare function printPDF(printData: PrintData[]): void;
+export declare function printPDF(printData: PrintData[]): JsPDF;
