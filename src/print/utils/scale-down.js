@@ -1,4 +1,4 @@
-import {mmDpiFactor} from "./mm-dpi-factor";
+import {mmDpiFactor} from "./mm-dpi-factor.js";
 
 /**
  * Pictures need to get scaled down if they are too huge and would exceed the expected area of printing.

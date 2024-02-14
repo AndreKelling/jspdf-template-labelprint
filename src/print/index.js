@@ -1,12 +1,12 @@
 import jsPDF from 'jspdf';
-import logo from "./partials/logo";
-import titles from "./partials/titles";
-import settings from "./partials/settings";
-import bulletPoints from "./partials/bullet-points";
-import productCode from "./partials/productCode";
-import productId from "./partials/productId";
-import qrCode from "./partials/qrCode";
-import assembleFileName from "./utils/file-name";
+import logo from "./partials/logo.js";
+import titles from "./partials/titles.js";
+import settings from "./partials/settings.js";
+import bulletPoints from "./partials/bullet-points.js";
+import productCode from "./partials/product-code.js";
+import productId from "./partials/product-id.js";
+import qrCode from "./partials/qr-code.js";
+import assembleFileName from "./utils/file-name.js";
 
 /**
  * @param {PrintData[]} printDataArr

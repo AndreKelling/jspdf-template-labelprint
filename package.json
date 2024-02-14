@@ -1,12 +1,13 @@
 {
   "name": "jspdf-template-labelprint",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "src/app.js",
   "author": "André Kelling",
   "description": "Dymo Label PDF template",
   "repository": "https://github.com/AndreKelling/jspdf-template-labelprint",
   "homepage": "https://andrekelling.github.io/jspdf-template-labelprint/",
   "license": "MIT",
+  "type": "module",
   "scripts": {
     "build": "esbuild docs/app-demo.js --bundle --minify --sourcemap --outfile=docs/dist/demo-bundle.js",
     "dev": "esbuild docs/app-demo.js --bundle --watch --sourcemap --outfile=docs/dist/demo-bundle.js",

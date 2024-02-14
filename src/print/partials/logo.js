@@ -1,6 +1,6 @@
 import jsPDF from 'jspdf';
-import scaleDown from "../utils/scale-down";
-import {mmDpiFactor} from "../utils/mm-dpi-factor";
+import scaleDown from "../utils/scale-down.js";
+import {mmDpiFactor} from "../utils/mm-dpi-factor.js";
 
 /**
  * jsPDF import just for typing!
