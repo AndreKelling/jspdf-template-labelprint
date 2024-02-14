@@ -1,5 +1,5 @@
 import jsPDF from 'jspdf';
-import scaleDown from "../utils/scale-down.js";
+import scaleDown from "../utils/scale-down";
 
 /**
  * jsPDF import just for typing!

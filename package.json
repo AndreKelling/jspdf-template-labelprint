@@ -1,6 +1,6 @@
 {
   "name": "jspdf-template-labelprint",
-  "version": "1.0.4",
+  "version": "1.0.3",
   "main": "src/app.js",
   "author": "André Kelling",
   "description": "Dymo Label PDF template",
@@ -11,18 +11,13 @@
   "scripts": {
     "build": "esbuild docs/app-demo.js --bundle --minify --sourcemap --outfile=docs/dist/demo-bundle.js",
     "dev": "esbuild docs/app-demo.js --bundle --watch --sourcemap --outfile=docs/dist/demo-bundle.js",
-    "serve": "npx http-server docs -p 6262",
-    "test": "jest"
+    "serve": "npx http-server docs -p 6262"
   },
   "dependencies": {
     "jspdf": "^2.5.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.23.9",
-    "@babel/preset-env": "^7.23.9",
-    "babel-jest": "^29.7.0",
-    "esbuild": "0.20.0",
-    "jest": "^29.7.0"
+    "esbuild": "0.20.0"
   },
   "engines": {
     "node": ">=18.0.0"
