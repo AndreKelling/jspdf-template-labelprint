@@ -22,7 +22,7 @@ export default (doc) => {
         SubTitleFontSize:12,
         NormalFontSize:9,
         SmallFontSize:8,
-        IdFontSize:18
+        IdFontSize:21
     };
     doc.vars.lineSpacing = 5;
 }

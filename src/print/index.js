@@ -21,7 +21,7 @@ export default (printDataArr) => {
 
     settings(doc);
 
-    let startY = 20;
+    let startY = 18;
 
     const pageWidth = doc.internal.pageSize.width;
 
