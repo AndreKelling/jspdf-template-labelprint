@@ -1,6 +1,6 @@
 # jsPDF Template Labelprint
 
-This is a template [jsPDF](https://github.com/parallax/jsPDF) in an _ES6 / ECMAScript webpack_ setup.
+This is a template [jsPDF](https://github.com/parallax/jsPDF) in an _ES module_ setup.
 It shall get used for a DYMO 36x89mm label printer.
 
 Here there is a [demo](https://andrekelling.github.io/jspdf-template-labelprint/).
