@@ -23,6 +23,7 @@
 
         svg,
         input,
+        textarea,
         button {
             display: block;
             width: 100%;
@@ -33,7 +34,8 @@
             max-width: 12rem;
         }
 
-        input[type=text] {
+        input[type=text],
+        textarea {
             max-width: 36rem;
             padding: 1rem;
             margin-bottom: .4rem;
@@ -71,6 +73,8 @@
 <button id="long">Print long texts</button>
 <button id="multipage">Print multipage</button>
 <h2>Print with custom text data</h2>
+<label for="logo">Logo base64 image string</label>
+<textarea id="logo" name="logo"></textarea>
 <label for="productName">Product name</label>
 <input type="text" id="productName" name="productName" value="Mower">
 <label for="productColour">Product color</label>
