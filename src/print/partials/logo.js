@@ -33,5 +33,7 @@ export default (doc, logo) => {
 
     const x = pageCenterX - dimensions.width / 2;
 
-    doc.addImage(logo, imageProps.fileType, x, startY, dimensions.width, dimensions.height);
+    const centerY = startY + (maxHeightLogo - dimensions.height * mmDpiFactor) / 2;
+
+    doc.addImage(logo, imageProps.fileType, x, centerY, dimensions.width, dimensions.height);
 }
