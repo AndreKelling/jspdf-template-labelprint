@@ -23,12 +23,13 @@ export default (doc, printData, startY, pageWidth) => {
             doc.text(line, pageCenterX, startY, {align: 'center', maxWidth: pageWidth});
             startY += doc.vars.lineSpacing;
         })
+        // reset bold font
+        doc.setFont(doc.vars.fontFamily, doc.vars.fontWeightNormal);
     }
 
     doc.setFontSize(doc.vars.fontSizes.SubTitleFontSize);
     const productColour = printData.productColour;
     if (productColour) {
-        doc.setFont(doc.vars.fontFamily, doc.vars.fontWeightNormal);
         const productColourArr = doc.splitTextToSize(productColour, pageWidth);
         if (productColourArr.length > 2) {
             productColourArr.splice(2, productColourArr.length - 2);
