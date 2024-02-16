@@ -1,6 +1,6 @@
 {
   "name": "jspdf-template-labelprint",
-  "version": "1.1.3",
+  "version": "1.2.0",
   "main": "src/app.js",
   "author": "André Kelling",
   "description": "Dymo Label PDF template",
