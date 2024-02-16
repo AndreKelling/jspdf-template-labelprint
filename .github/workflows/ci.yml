@@ -2,7 +2,7 @@ name: NodeJS demo build and deploy GitHub page and node package publishing
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main", "package/*" ]
   pull_request:
     branches: [ "main" ]
 
