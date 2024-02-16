@@ -5,11 +5,11 @@ import JsPDF from 'jspdf';
  *
  * @param {JsPDF} doc
  * @param {PrintData} printData
- * @param {number} startY
  * @param {number} pageWidth
  */
-export default (doc, printData, startY, pageWidth) => {
+export default (doc, printData, pageWidth) => {
     const pageCenterX = pageWidth / 2;
+    let startY = doc.vars.startY.titles;
 
     doc.setFontSize(doc.vars.fontSizes.TitleFontSize);
     const productName = printData.productName;

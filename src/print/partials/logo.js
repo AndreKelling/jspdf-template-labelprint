@@ -13,7 +13,7 @@ export default (doc, logo) => {
         return;
     }
 
-    const startY = 1;
+    const startY = doc.vars.startY.logo;;
     const pageWidth = doc.internal.pageSize.width;
     const pageWidthInPx = Math.round((pageWidth - 4) * mmDpiFactor);  // minus 4mm, 2mm spacing for each side
     const maxHeightLogo = 18; // in mm from first startY for the productName

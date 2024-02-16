@@ -13,7 +13,7 @@ export default (doc, productCode, pageWidth) => {
         return;
     }
     const pageCenterX = pageWidth / 2;
-    let startY = 55;
+    let startY = doc.vars.startY.productCode;
 
     doc.setFontSize(doc.vars.fontSizes.SmallFontSize);
 

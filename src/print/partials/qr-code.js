@@ -12,7 +12,7 @@ export default (doc, qrCode, pageWidth) => {
     if (!qrCode) {
         return;
     }
-    const startY = 57;
+    const startY = doc.vars.startY.qrCode;
     const qrCodeDimension = 63;
     const maxWidthInPx = qrCodeDimension;
     const maxHeightInPx = qrCodeDimension;

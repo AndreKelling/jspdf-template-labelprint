@@ -17,6 +17,15 @@ export default (doc) => {
     // SETTINGS
     // <><>><><>><>><><><><><>>><><<><><><><>
 
+    doc.vars.startY = {
+        logo: 1,
+        titles:14,
+        bulletPoints:37,
+        productCode:55,
+        qrCode:57,
+        productId:86
+    };
+
     doc.vars.fontSizes = {
         TitleFontSize:14,
         SubTitleFontSize:12,

@@ -21,8 +21,6 @@ export default (printDataArr) => {
 
     settings(doc);
 
-    let startY = 18;
-
     const pageWidth = doc.internal.pageSize.width;
 
     // <><>><><>><>><><><><><>>><><<><><><><>
@@ -30,7 +28,7 @@ export default (printDataArr) => {
     // <><>><><>><>><><><><><>>><><<><><><><>
 
     printDataArr.forEach((printData, index) => {
-        titles(doc, printData, startY, pageWidth);
+        titles(doc, printData, pageWidth);
 
         bulletPoints(doc, printData.bulletPoints, pageWidth);
 
