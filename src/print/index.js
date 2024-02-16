@@ -15,7 +15,7 @@ import assembleFileName from "./utils/file-name.js";
 export default (printDataArr) => {
     const options = {
         orientation: 'p',
-        format: [36, 89]
+        format: [54, 70]
     }
     const doc = new JsPDF(options);
 

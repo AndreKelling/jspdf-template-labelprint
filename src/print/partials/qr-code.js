@@ -13,10 +13,10 @@ export default (doc, qrCode, pageWidth) => {
         return;
     }
     const startY = doc.vars.startY.qrCode;
-    const qrCodeDimension = 63;
+    const startX = 2;
+    const qrCodeDimension = 50;
     const maxWidthInPx = qrCodeDimension;
     const maxHeightInPx = qrCodeDimension;
-    const pageCenterX = pageWidth / 2;
 
     let imageProps;
 
@@ -29,7 +29,7 @@ export default (doc, qrCode, pageWidth) => {
 
     const dimensions = scaleDown(imageProps.width, imageProps.height, maxWidthInPx, maxHeightInPx);
 
-    const x = pageCenterX - dimensions.width / 2;
 
-    doc.addImage(qrCode, imageProps.fileType, x, startY, dimensions.width, dimensions.height);
+
+    doc.addImage(qrCode, imageProps.fileType, startX, startY, dimensions.width, dimensions.height);
 }

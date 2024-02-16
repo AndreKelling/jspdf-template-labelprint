@@ -18,12 +18,12 @@ export default (doc) => {
     // <><>><><>><>><><><><><>>><><<><><><><>
 
     doc.vars.startY = {
-        logo: 1,
+        logo:1,
         titles:14,
-        bulletPoints:37,
-        productCode:55,
-        qrCode:57,
-        productId:86
+        bulletPoints:30,
+        productCode:52,
+        qrCode:50,
+        productId:67.5
     };
 
     doc.vars.fontSizes = {
@@ -31,7 +31,7 @@ export default (doc) => {
         SubTitleFontSize:12,
         NormalFontSize:9,
         SmallFontSize:8,
-        IdFontSize:21
+        IdFontSize:26
     };
     doc.vars.lineSpacing = 5;
 }

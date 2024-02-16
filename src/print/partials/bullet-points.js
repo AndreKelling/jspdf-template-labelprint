@@ -14,7 +14,7 @@ export default (doc, bulletPoints, pageWidth) => {
 
     const startX = 2;
     let startY = doc.vars.startY.bulletPoints;
-    const lineSpacing = doc.vars.lineSpacing - 1.6;
+    const lineSpacing = doc.vars.lineSpacing - 1;
 
     doc.setFontSize(doc.vars.fontSizes.NormalFontSize);
 

@@ -20,7 +20,7 @@ export default (doc, printData, pageWidth) => {
             productNameArr.splice(2, productNameArr.length - 2);
         }
         productNameArr.forEach((line) => {
-            doc.text(line, pageCenterX, startY, {align: 'center', maxWidth: pageWidth});
+            doc.text(line, pageCenterX, startY, {align: 'center'});
             startY += doc.vars.lineSpacing;
         })
         // reset bold font
@@ -30,13 +30,6 @@ export default (doc, printData, pageWidth) => {
     doc.setFontSize(doc.vars.fontSizes.SubTitleFontSize);
     const productColour = printData.productColour;
     if (productColour) {
-        const productColourArr = doc.splitTextToSize(productColour, pageWidth);
-        if (productColourArr.length > 2) {
-            productColourArr.splice(2, productColourArr.length - 2);
-        }
-        productColourArr.forEach((line) => {
-            doc.text(line, pageCenterX, startY, {align: 'center', maxWidth: pageWidth});
-            startY += doc.vars.lineSpacing;
-        })
+        doc.text(productColour, pageCenterX, startY + 1, {align: 'center'});
     }
 }

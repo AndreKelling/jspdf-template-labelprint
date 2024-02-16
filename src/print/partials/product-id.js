@@ -11,15 +11,16 @@ export default (doc, productId, pageWidth) => {
     if (!productId) {
         return;
     }
-    const pageCenterX = pageWidth / 2;
+    const startX = 23;
     let startY = doc.vars.startY.productId;
 
     doc.setFontSize(doc.vars.fontSizes.IdFontSize);
+    doc.setTextColor(160, 160, 160);
 
-    const textOptions = {align: 'center', maxWidth: pageWidth, charSpace: 0.5};
+    const textOptions = {charSpace: 0.5};
 
     // https://github.com/parallax/jsPDF/issues/3406#issuecomment-1092298117
     const adjustmentX = textOptions.charSpace * doc.getStringUnitWidth(productId);
 
-    doc.text(productId, pageCenterX - adjustmentX, startY, textOptions);
+    doc.text(productId, startX - adjustmentX, startY, textOptions);
 }
