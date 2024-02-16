@@ -15,7 +15,9 @@ export default (doc, logo) => {
 
     const startY = doc.vars.startY.logo;
     const pageWidth = doc.internal.pageSize.width;
-    const pageWidthInPx = Math.round((pageWidth - 4) * mmDpiFactor);  // minus 4mm, 2mm spacing for each side
+
+    const maxWidthFactor = 0.66;
+    const maxWidthInPx = Math.round((pageWidth * maxWidthFactor) * mmDpiFactor);  // minus 4mm, 2mm spacing for each side
     const maxHeightLogo = 9; // in mm from first startY for the productName
     const maxHeightLogoInPx = Math.round(maxHeightLogo * mmDpiFactor); // minus 6mm, for spacing to top and 5 for better spacing and calculation at all
 
@@ -32,7 +34,7 @@ export default (doc, logo) => {
 
     const dimensions = scaleDown(imageProps.width, imageProps.height, maxWidthInPx, maxHeightLogoInPx);
 
-    const x = pageCenterX - dimensions.width / mmDpiFactor / 2;
+    const x = pageCenterX - dimensions.width / 2;
 
     const centerY = (startY + maxHeightLogo) / 2 - dimensions.height / 2;
 

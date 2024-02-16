@@ -8,7 +8,7 @@ import {mmDpiFactor} from "./mm-dpi-factor.js";
  * @param {number} height
  * @param {number} targetWidth
  * @param {number} targetHeight
- * @returns {{width: number, height: number}}
+ * @returns {{width: number, height: number}} in mm
  */
 export default (width, height, targetWidth, targetHeight) => {
     if (width > targetWidth) {
