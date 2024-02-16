@@ -27,4 +27,5 @@ export default (doc, productCode, pageWidth) => {
     }
 
     doc.text(productCode, startX, startY, {maxWidth});
+    doc.setTextColor(0, 0, 0);
 }

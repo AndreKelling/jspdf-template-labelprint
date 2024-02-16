@@ -20,4 +20,5 @@ export default (doc, productId, pageWidth) => {
     const textOptions = {charSpace: 0.5};
 
     doc.text(productId, startX, startY, textOptions);
+    doc.setTextColor(0, 0, 0);
 }
