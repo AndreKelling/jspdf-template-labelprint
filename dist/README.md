@@ -1,6 +1,6 @@
-# jsPDF Product Label
+# jsPDF Product Label 54 x 70 mm
 
-It shall get used for a DYMO 36x89mm label printer.
+It shall get used for a DYMO 54x70mm label printer.
 
 Here there is a [demo](https://andrekelling.github.io/jspdf-template-labelprint/) how that print is looking like.
 
@@ -8,14 +8,14 @@ It does not work as an ES module in node.js, because JsPDF has an [issue](https:
 
 ## Install
 
-1. `npm i jspdf-product-label -S`
+1. `npm i jspdf-product-label-54x70 -S`
 
 ## Usage
 
 Should look like this:
 
 ```
-import { printPDF } from "jspdf-product-label";
+import { printPDF } from "jspdf-product-label-54x70";
 
 document.querySelector(".js-print-pdf").addEventListener("click", function() {
     /**
