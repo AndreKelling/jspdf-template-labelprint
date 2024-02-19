@@ -23,7 +23,7 @@ export default (doc, productCode, pageWidth) => {
 
     const maxWidth = pageWidth - startX - 2
     if (stringWidthInMm > maxWidth) {
-        doc.setFontSize(doc.vars.fontSizes.SmallFontSize - 1);
+        doc.setFontSize(doc.vars.fontSizes.SmallFontSize - 2);
     }
 
     doc.text(productCode, startX, startY, {maxWidth});
