@@ -16,7 +16,6 @@ export default (doc, productCode, pageWidth) => {
     let startY = doc.vars.startY.productCode;
 
     doc.setFontSize(doc.vars.fontSizes.SmallFontSize);
-    doc.setTextColor(150, 150, 150);
 
     // check if the product code is too long for the page ONCE
     const stringWidthInMm = doc.getStringUnitWidth(productCode) * mmDpiFactor;
@@ -27,5 +26,4 @@ export default (doc, productCode, pageWidth) => {
     }
 
     doc.text(productCode, startX, startY, {maxWidth});
-    doc.setTextColor(0, 0, 0);
 }
