@@ -28,9 +28,9 @@ export default (printDataArr) => {
     // <><>><><>><>><><><><><>>><><<><><><><>
 
     printDataArr.forEach((printData, index) => {
-        titles(doc, printData, pageWidth);
+        const startY = titles(doc, printData, pageWidth);
 
-        bulletPoints(doc, printData.bulletPoints, pageWidth);
+        bulletPoints(doc, printData.bulletPoints, pageWidth, startY);
 
         // print qr code before text. so that any white margin from image is below text.
         qrCode(doc, printData.qrCode, pageWidth);

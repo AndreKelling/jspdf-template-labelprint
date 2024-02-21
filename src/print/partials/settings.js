@@ -20,7 +20,6 @@ export default (doc) => {
     doc.vars.startY = {
         logo:1,
         titles:14,
-        bulletPoints:35,
         productCode:52,
         qrCode:50,
         productId:67.5

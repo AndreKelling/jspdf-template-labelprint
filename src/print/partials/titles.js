@@ -6,6 +6,8 @@ import JsPDF from 'jspdf';
  * @param {JsPDF} doc
  * @param {PrintData} printData
  * @param {number} pageWidth
+ *
+ * @return number
  */
 export default (doc, printData, pageWidth) => {
     const pageCenterX = pageWidth / 2;
@@ -31,6 +33,9 @@ export default (doc, printData, pageWidth) => {
     doc.setFontSize(doc.vars.fontSizes.SubTitleFontSize);
     const productColour = printData.productColour;
     if (productColour) {
-        doc.text(productColour, pageCenterX, startY + 1, {align: 'center'});
+        doc.text(productColour, pageCenterX, startY, {align: 'center'});
+        startY += doc.vars.lineSpacing;
     }
+
+    return startY;
 }

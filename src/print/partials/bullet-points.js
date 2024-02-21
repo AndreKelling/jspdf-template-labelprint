@@ -6,14 +6,14 @@ import JsPDF from 'jspdf';
  * @param {JsPDF} doc
  * @param {string[]} bulletPoints
  * @param {number} pageWidth
+ * @param {number} startY
  */
-export default (doc, bulletPoints, pageWidth) => {
+export default (doc, bulletPoints, pageWidth, startY) => {
     if (!bulletPoints) {
         return;
     }
 
     const startX = 2;
-    let startY = doc.vars.startY.bulletPoints;
     const lineSpacing = doc.vars.lineSpacing - 1;
 
     doc.setFontSize(doc.vars.fontSizes.SmallestFontSize);
