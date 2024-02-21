@@ -16,8 +16,9 @@ export default (doc, printData, pageWidth) => {
     if (productName) {
         doc.setFont(doc.vars.fontFamily, doc.vars.fontWeightBold);
         const productNameArr = doc.splitTextToSize(productName, pageWidth);
-        if (productNameArr.length > 2) {
-            productNameArr.splice(2, productNameArr.length - 2);
+        const maxLines = 3;
+        if (productNameArr.length > maxLines) {
+            productNameArr.splice(maxLines, productNameArr.length - maxLines);
         }
         productNameArr.forEach((line) => {
             doc.text(line, pageCenterX, startY, {align: 'center'});

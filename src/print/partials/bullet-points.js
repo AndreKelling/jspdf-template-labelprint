@@ -16,7 +16,7 @@ export default (doc, bulletPoints, pageWidth) => {
     let startY = doc.vars.startY.bulletPoints;
     const lineSpacing = doc.vars.lineSpacing - 1;
 
-    doc.setFontSize(doc.vars.fontSizes.SmallFontSize);
+    doc.setFontSize(doc.vars.fontSizes.SmallestFontSize);
 
     bulletPoints.forEach((point) => {
         const pointArr = doc.splitTextToSize(point, pageWidth - (2 * startX));

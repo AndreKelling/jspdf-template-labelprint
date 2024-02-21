@@ -42,14 +42,13 @@ const longPrintData = [
     {
         ...basePrintData,
         "logo": logoPortraitString,
-        "productName": "Blue Ananas with heavy heavy spikes",
+        "productName": "Blue Ananas with heavy heavy spikes and aroma juice",
         "productColour": "blue/yellow and red, purple and stripes",
         "bulletPoints": [
             "1. Point one is quite long",
             "2. Point two",
             "3. Point three is also quite a long text",
-            "4. Point four",
-            "5. Point five"
+            "4. Point four"
         ],
         "productCode": "DX.123-456-$4-superlong",
     }
