@@ -10,9 +10,10 @@ import assembleFileName from "./utils/file-name.js";
 
 /**
  * @param {PrintData[]} printDataArr
+ * @param {boolean} asBlob if true, returns the pdf as a blob
  * @returns {JsPDF}
  */
-export default (printDataArr) => {
+export default (printDataArr, asBlob = false) => {
     const options = {
         orientation: 'p',
         format: [54, 70]
@@ -52,5 +53,5 @@ export default (printDataArr) => {
     // <><>><><>><>><><><><><>>><><<><><><><>
     const fileName = assembleFileName(printDataArr.length, printDataArr[0]);
 
-    return doc.save(fileName + ".pdf");
+    return asBlob ? doc.output('blob') : doc.save(fileName + ".pdf");
 }

@@ -10,4 +10,4 @@ declare interface PrintData {
     productId?: string
 }
 
-export declare function printPDF(printData: PrintData[]): JsPDF;
+export declare function printPDF(printData: PrintData[], asBlob?: boolean): JsPDF;

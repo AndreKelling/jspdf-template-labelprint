@@ -1,6 +1,6 @@
 {
   "name": "jspdf-product-label-54x70",
-  "version": "1.2.10",
+  "version": "1.3.0",
   "main": "src/app.js",
   "author": "André Kelling",
   "description": "Dymo Label PDF printing 54 x 70mm.",
