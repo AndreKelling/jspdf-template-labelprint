@@ -7,11 +7,11 @@
  * @returns {string}
  */
 export default (arrLength, firstPrintData) => {
-    const productNameForFile = fileNameSafe(firstPrintData.productName);
+    const productNameForFile = fileNameSafe(firstPrintData.productCode);
 
     const isMultiPage = arrLength > 1;
     if (isMultiPage) {
-        return `${productNameForFile}+${fileNameSafe(firstPrintData.productCode)}`;
+        return productNameForFile;
     }
 
     const productColourForFile = fileNameSafe(firstPrintData.productColour);
