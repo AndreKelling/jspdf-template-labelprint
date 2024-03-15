@@ -42,3 +42,7 @@ document.querySelector(".js-print-pdf").addEventListener("click", function() {
     ]);
 });
 ```
+
+A second method is the `assembleFileName` method which is used to create a filename for the pdf.
+Especially handy in file blob mode. e.g. `printPDF([printData], true);`.
+

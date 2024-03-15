@@ -11,3 +11,4 @@ declare interface PrintData {
 }
 
 export declare function printPDF(printData: PrintData[], asBlob?: boolean): JsPDF;
+export declare function assembleFileName(arrayLength: number, printData: PrintData): string;

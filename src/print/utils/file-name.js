@@ -2,7 +2,7 @@
  * If we have a multi-page printout, we just want the product name.
  * If it's a single-page printout, we want the product name and colour.
  *
- * @param {number} arrLength
+ * @param {number} arrLength for name decision if we have a multi-page printout
  * @param {PrintData} firstPrintData
  * @returns {string}
  */
